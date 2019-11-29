@@ -38,6 +38,7 @@ APP_LOAD_FLAGS=--appFlags 0xa40
 APP_LOAD_PARAMS += $(APP_LOAD_FLAGS)
 DEFINES += $(DEFINES_LIB)
 
+ICONNAME=./qkc.gif
 ################
 # Default rule #
 ################
