@@ -1497,15 +1497,7 @@ unsigned int io_seproxyhal_touch_tx_ok(const bagl_element_t *e) {
                       sizeof(tmpCtx.transactionContext.hash), signature, &info);
     os_memset(&privateKey, 0, sizeof(privateKey));
     // Parity is present in the sequence tag in the legacy API
-    if (tmpContent.txContent.vLength == 0) {
-      // Legacy API
-      G_io_apdu_buffer[0] = 27;
-    }
-    else {
-      // New API
-      // Note that this is wrong for a large v, but the client can always recover
-      G_io_apdu_buffer[0] = (v * 2) + 35;
-    }
+    G_io_apdu_buffer[0] = 27;
     if (info & CX_ECCINFO_PARITY_ODD) {
       G_io_apdu_buffer[0]++;
     }
@@ -2322,7 +2314,6 @@ void handleSignPersonalMessage(uint8_t p1, uint8_t p2, uint8_t *workBuffer, uint
 
 void handleApdu(volatile unsigned int *flags, volatile unsigned int *tx) {
   unsigned short sw = 0;
-  PRINTF("ZHUQIANG-HANDLE-APDU")
   BEGIN_TRY {
     TRY {
       if (G_io_apdu_buffer[OFFSET_CLA] != CLA) {
