@@ -2326,10 +2326,10 @@ void handleApdu(volatile unsigned int *flags, volatile unsigned int *tx) {
           handleGetPublicKey(G_io_apdu_buffer[OFFSET_P1], G_io_apdu_buffer[OFFSET_P2], G_io_apdu_buffer + OFFSET_CDATA, G_io_apdu_buffer[OFFSET_LC], flags, tx);
           break;
 
-        case INS_PROVIDE_ERC20_TOKEN_INFORMATION:
-          currentTokenSet = false;
-          handleProvideErc20TokenInformation(G_io_apdu_buffer[OFFSET_P1], G_io_apdu_buffer[OFFSET_P2], G_io_apdu_buffer + OFFSET_CDATA, G_io_apdu_buffer[OFFSET_LC], flags, tx);
-          break;
+        // case INS_PROVIDE_ERC20_TOKEN_INFORMATION:
+        //   currentTokenSet = false;
+        //   handleProvideErc20TokenInformation(G_io_apdu_buffer[OFFSET_P1], G_io_apdu_buffer[OFFSET_P2], G_io_apdu_buffer + OFFSET_CDATA, G_io_apdu_buffer[OFFSET_LC], flags, tx);
+        //   break;
 
         case INS_SIGN:
           handleSign(G_io_apdu_buffer[OFFSET_P1], G_io_apdu_buffer[OFFSET_P2], G_io_apdu_buffer + OFFSET_CDATA, G_io_apdu_buffer[OFFSET_LC], flags, tx);
